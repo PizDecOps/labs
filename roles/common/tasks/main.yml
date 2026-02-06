@@ -3,3 +3,10 @@
     name: "{{ required_packages }}"
     state: present
     update_cache: yes
+
+- name: Allow password authentication for students
+  lineinfile:
+    path: /etc/ssh/sshd_config
+    regexp: "^#?PasswordAuthentication"
+    line: "PasswordAuthentication yes"
+  notify: restart_ssh
