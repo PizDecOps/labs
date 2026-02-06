@@ -1,0 +1,2 @@
+student_user: student
+required_packages: [shellcheck, tree, jq, htop, curl, vim, bsdmainutils]
