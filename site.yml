@@ -1,0 +1,6 @@
+---
+- name: Provision Bash Workshop Labs
+  hosts: workshop
+  roles:
+    - common
+    - student_env
