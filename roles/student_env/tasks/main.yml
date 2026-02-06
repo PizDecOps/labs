@@ -3,17 +3,31 @@
     name: "{{ student_user }}"
     shell: /bin/bash
     password: "{{ student_password }}"
+    create_home: yes
 
-- name: Create lab directories
+- name: Create workshop root directory
   file:
-    path: "/home/{{ student_user }}//bash/lab_{{ item }}"
+    path: "/home/{{ student_user }}/bash"
     state: directory
     owner: "{{ student_user }}"
+    group: "{{ student_user }}"
+    mode: "0755"
+
+- name: Create lab directories inside bash folder
+  file:
+    path: "/home/{{ student_user }}/bash/lab_{{ item }}"
+    state: directory
+    owner: "{{ student_user }}"
+    group: "{{ student_user }}"
+    mode: "0755"
   loop: [1, 2, 3]
 
 - name: Generate dummy log for Grep/Awk lab
   copy:
     dest: "/home/{{ student_user }}/bash/lab_2/access.log"
+    owner: "{{ student_user }}"
+    group: "{{ student_user }}"
+    mode: "0644"
     content: |
       192.168.1.10 - - [06/Feb/2026:12:01:01] "GET /index.html" 200
       10.0.0.5 - - [06/Feb/2026:12:05:22] "POST /login" 403
