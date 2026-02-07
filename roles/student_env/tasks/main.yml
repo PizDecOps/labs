@@ -55,3 +55,12 @@
       {% for i in range(1, 101) %}
       [2026-02-07 10:{{ i % 60 }}:00] INFO: System status check {{ i }}
       {% endfor %}
+
+- name: Set custom MOTD (Message of the Day)
+  copy:
+    dest: /etc/motd
+    content: |
+      **************************************************
+      * ДОБРО ПОЖАЛОВАТЬ НА BASH WORKSHOP 2026!        *
+      * Твои задания находятся в папке: ~/bash         *
+      **************************************************
