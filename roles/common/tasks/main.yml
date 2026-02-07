@@ -1,8 +1,24 @@
-- name: Update apt and install tools
+---
+- name: Enable universe repository
+  shell: add-apt-repository universe -y
+
+- name: Force update apt cache
+  apt:
+    update_cache: yes
+  register: apt_res
+  until: apt_res is success
+  retries: 5
+  delay: 10
+
+- name: Install tools
   apt:
     name: "{{ required_packages }}"
     state: present
-    update_cache: yes
+    update_cache: no
+  register: install_res
+  until: install_res is success
+  retries: 3
+  delay: 5
 
 - name: Allow password authentication for students
   lineinfile:
