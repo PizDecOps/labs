@@ -2,6 +2,6 @@
 
 **Локация:** `~/git`
 
-1. Инициализируй репозиторий: `git init`.
-2. Создай файл `hello.txt`.
-3. Закоммить его: `git add hello.txt` и `git commit -m "initial commit"`.
+1. Инициализируй репозиторий: `git init`
+2. Создай файл `hello.txt`
+3. Закоммить его: `git add hello.txt` и `git commit -m "initial commit"`
