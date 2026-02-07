@@ -28,3 +28,15 @@ release-major:
 # Запушить релиз с тегами
 publish:
     git push --follow-tags origin main
+
+# Развернуть всю лабу с нуля
+up:
+    ./run.sh
+
+# Удалить все контейнеры
+down:
+    ./destroy_infra.sh
+
+# Проверить готовность
+test:
+    ./test_infra.sh
