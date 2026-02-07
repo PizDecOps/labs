@@ -1,0 +1,27 @@
+---
+- name: Create git workshop root directory
+  file:
+    path: "/home/{{ student_user }}/git"
+    state: directory
+    owner: "{{ student_user }}"
+    group: "{{ student_user }}"
+    mode: "0755"
+
+- name: Pre-configure Git for students
+  copy:
+    dest: "/home/{{ student_user }}/.gitconfig"
+    owner: "{{ student_user }}"
+    group: "{{ student_user }}"
+    content: |
+      [user]
+        name = Student
+        email = student@workshop.local
+      [init]
+        defaultBranch = main
+
+- name: Copy Git tasks to student home
+  copy:
+    src: tasks/git.md
+    dest: "/home/{{ student_user }}/git/README.md"
+    owner: "{{ student_user }}"
+    mode: "0644"
